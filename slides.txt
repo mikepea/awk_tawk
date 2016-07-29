@@ -1,0 +1,336 @@
+.
+.
+.
+.
+.
+.
+.
+.
+.
+                        ___        ___  __
+                       / \ \      / / |/ /
+                      / _ \ \ /\ / /| ' /
+                     / ___ \ V  V / | . \
+                    /_/   \_\_/\_/  |_|\_\
+.
+                   _____  ___        ___  __
+                  |_   _|/ \ \      / / |/ /
+                    | | / _ \ \ /\ / /| ' /
+                    | |/ ___ \ V  V / | . \
+                    |_/_/   \_\_/\_/  |_|\_\
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+                          AWK? WUT?
+                          ---------
+.
+                          *
+                Alfred V. Aho
+                 Peter J. Weinberger
+                 Brian W. Kernighan
+                          *
+.
+                          * 1977 *
+.
+
+
+.
+.
+.
+                      A Bit Of History
+                      ----------------
+.
+   1970: Unics is born.
+   1971: man pages appear
+   1973: Unix pipelines invented, creating the Unix Philosophy,
+         and 'an unforgettable orgy of one-liners'.
+         Doug McIlroy <3
+.
+   1977: Unix 7th Edition. Has Bourne Shell, grep, sed.
+.
+                           AND AWK
+.
+   1979: vi appears on the scene.
+.
+   1986: 4.3BSD released. 'The Greatest Software Ever Written'
+   1988: The AWK Programming Language released
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+   1994: mikepea writes his first program in AWK.
+.
+         A menu system for a helpdesk at $firstjob
+.
+         After learning vi.
+
+!mplayer -vo caca -ss 00:10 -endpos 00:10 tim-and-eric-mind-blown.mp4
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+                    System Error
+                    ------------
+.
+                    MIND ASPLODED
+
+.
+.
+.
+.
+.
+.
+.
+                   Rough format most peoples AWK
+                   -----------------------------
+.
+.
+                   grep ' 200 ' $file | awk '{print $3}'
+.
+.
+                          or maybe...
+.
+.
+                   awk '/ 200 / {print $3}' # OMG
+.
+.
+                          or maybe...
+.
+.
+                   awk '$7 == 200 {print $3}' # OMG OMG OMG
+
+
+.
+.
+.
+.
+.
+.
+.
+                   Understand awk a bit betterer
+                   -----------------------------
+.
+                   awk '{program}' input files
+.
+                   awk -f {script} input files
+.
+                   ... where a program looks like:
+.
+                   BEGIN {
+                     # do stuff
+                   }
+                   (expression) {
+                     # do stuff on records matching expression
+                   }
+                   /regex/ {
+                     # do stuff on records matching regex
+                   }
+                   END {
+                     # finish up
+                   }
+
+
+.
+.
+.
+.
+.
+.
+.
+                   Some common variables
+                   ---------------------
+.
+.
+             $1 .. $n   - field references
+             NR         - number of records in input
+             NF         - number of fields in record
+             $NF        - last field in record
+             RS         - record seperator (default \n)
+             FS         - field seperator (default whitespace)
+
+.
+.
+.
+.
+.
+.
+.
+                          WHY EVEN?
+                          ---------
+
+
+.
+.
+.
+.
+.
+.
+.
+                          WHY EVEN?
+                          ---------
+.
+                     Blame Bryan Cantrill
+
+!mplayer -vo caca -ss 17:51 -endpos 00:01 cantrill_big_data_awk.mkv
+
+.
+.
+.
+.
+.
+.
+.
+                          WHY EVEN?
+                          ---------
+.
+                     Blame Bryan Cantrill
+.
+             The AWK Programming Language, 1988
+.
+  <3 <3 <3  Typeset using a DEC VAX 8550 running 9th ed. UNIX® <3 <3 <3
+.
+.
+
+!mplayer -vo caca -ss 19:50 -endpos 00:18 cantrill_big_data_awk.mkv
+
+
+
+
+.
+                   An Orgy Of One-Liners
+                   ---------------------
+.
+   awk 'END { print NR }'     # print number of input lines
+   awk 'NR == 10'             # print 10th line
+   awk '{ print $NF }'        # print last field of every line
+   awk 'NF > 4'               # print lines with more than 4 fields
+   awk '$NF > 4'              # print lines where last field is more than 4
+.
+   # print number of lines matching 'Foo'
+   awk '/Foo/ { nlines = nlines + 1 } END {print nlines}'
+.
+   # print max value of first field
+   awk '$1 > max { max = $1 } END {print max}'
+.
+   awk 'length($0) > 80'      # print lines >80 chars
+   awk '{ $1 = NR; print}'    # replace first field with line number
+   awk '{ $2 = ""; print}'    # erase the second field
+.
+
+
+.
+.
+.
+.
+.
+.
+.
+                                                _
+             _ __ ___  __ _  _____  ___ __  ___| |
+            | '__/ _ \/ _` |/ _ \ \/ / '_ \/ __| |
+            | | |  __/ (_| |  __/>  <| |_) \__ \_|
+            |_|  \___|\__, |\___/_/\_\ .__/|___(_)
+                      |___/          |_|
+.
+             OMG! THEY'RE SO NEW AND EXCITING! (*)
+.
+.
+.
+ (*) actually invented in 1956 by Stephen Cole Kleen, a mathematician
+.
+      ... and then repurposed by all those clever Unix folks.
+.
+.
+
+
+
+
+
+                   Regexes in AWK
+                   --------------
+
+
+
+
+                   How did I not know about printf?
+                   --------------------------------
+
+
+
+
+.
+.
+.
+.
+.
+.
+.
+                   This presentation was
+                      brought to you
+                      by the letters
+
+.
+.
+.
+.
+.
+.
+.
+                   This presentation was
+                      brought to you
+                      by the letters
+.
+                           A,
+
+.
+.
+.
+.
+.
+.
+.
+                   This presentation was
+                      brought to you
+                      by the letters
+.
+                           A,
+                           W,
+
+
+.
+.
+.
+.
+.
+.
+.
+                   This presentation was
+                      brought to you
+                      by the letters
+.
+                           A,
+                           W,
+                         & K
+
+!awk '{print "       ",$0}' present.awk
+
+!awk 'BEGIN { for (i=0;i<300;i++) {printf(" THANKYOU ")} }'
