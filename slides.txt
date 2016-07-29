@@ -4,9 +4,6 @@
 .
 .
 .
-.
-.
-.
                         ___        ___  __
                        / \ \      / / |/ /
                       / _ \ \ /\ / /| ' /
@@ -18,6 +15,14 @@
                     | | / _ \ \ /\ / /| ' /
                     | |/ ___ \ V  V / | . \
                     |_/_/   \_\_/\_/  |_|\_\
+.
+                              by
+.
+                           @mikepea
+.
+.
+         WARNING: This tawk repeatedly uses the word 'orgy',
+                  in an historical context. Sorry.
 
 .
 .
@@ -32,13 +37,20 @@
                           ---------
 .
                           *
+                          *
                 Alfred V. Aho
                  Peter J. Weinberger
                  Brian W. Kernighan
                           *
+                          *
 .
                           * 1977 *
 .
+      The year:
+.
+       - the Sex Pistols get in huge trouble for swearing on TV
+       - Abigails Party is released
+       - our lizard overlord has been ruling over us for 25 years
 
 
 .
@@ -47,20 +59,28 @@
                       A Bit Of History
                       ----------------
 .
-   1970: Unics is born.
-   1971: man pages appear
-   1973: Unix pipelines invented, creating the Unix Philosophy,
-         and 'an unforgettable orgy of one-liners'.
-         Doug McIlroy <3
+    1970: Unics is born.
+    1971: man pages appear
 .
-   1977: Unix 7th Edition. Has Bourne Shell, grep, sed.
+    1973: mikepea is born.
+    1973: Unix pipelines invented, creating the Unix Philosophy,
+          and 'an unforgettable orgy of one-liners'.
+          Doug McIlroy <3
+.
+    1977: Unix 7th Edition. Has Bourne Shell, grep, sed.
 .
                            AND AWK
 .
-   1979: vi appears on the scene.
+    1979: vi appears on the scene.
 .
-   1986: 4.3BSD released. 'The Greatest Software Ever Written'
-   1988: The AWK Programming Language released
+    1986: 4.3BSD released.
+          'The Greatest Software Ever Written', according to some.
+.
+    1990: Web is born.
+.
+    1991: Linux happens.
+.
+
 
 .
 .
@@ -75,9 +95,9 @@
 .
          A menu system for a helpdesk at $firstjob
 .
-         After learning vi.
+         ... after learning vi on the night shift.
 
-!mplayer -vo caca -ss 00:10 -endpos 00:10 tim-and-eric-mind-blown.mp4
+!mplayer -vo caca tim-and-eric-mind-blown.mp4
 
 .
 .
@@ -122,30 +142,31 @@
 .
 .
 .
-.
-.
-.
-.
                    Understand awk a bit betterer
                    -----------------------------
 .
-                   awk '{program}' input files
-.
-                   awk -f {script} input files
+                   awk '{program}' input_files
+                   awk -f {script} input_files
 .
                    ... where a program looks like:
 .
                    BEGIN {
-                     # do stuff
+                     # do initialisation stuff
                    }
-                   (expression) {
+                   expression {
                      # do stuff on records matching expression
+                     # eg '$3 > 200'; '$4 !~ /foo/'
+                     # can also be compound, with
+                     # logical &&, ||, ! etc.
                    }
                    /regex/ {
                      # do stuff on records matching regex
                    }
+                   /from/,/to/ {
+                     # do stuff on records between regexes
+                   }
                    END {
-                     # finish up
+                     # finish up. Like print a summary.
                    }
 
 
@@ -164,8 +185,8 @@
              NR         - number of records in input
              NF         - number of fields in record
              $NF        - last field in record
-             RS         - record seperator (default \n)
-             FS         - field seperator (default whitespace)
+             RS         - input record seperator (default \n)
+             FS         - input field seperator (default whitespace)
 
 .
 .
@@ -237,21 +258,35 @@
 .
 
 
+             The AWK Programming Language, 1988
+             ----------------------------------
 .
+           An absolute delight of a technical book
 .
+           Still amazingly current. Awk has changed (gawk, nawk)
+           but is still fundamentally the same language.
 .
+           Has got an 'Algorithms' section! Interview answers in AWK!
+.
+           Has a chapter on writing DSLs, which it calls
+           'Little Langauges' <3
+.
+           Has a section on creating a RDBMS in AWK, with a custom
+           query language!
+.
+
 .
 .
 .
 .
                                                 _
-             _ __ ___  __ _  _____  ___ __  ___| |
-            | '__/ _ \/ _` |/ _ \ \/ / '_ \/ __| |
-            | | |  __/ (_| |  __/>  <| |_) \__ \_|
-            |_|  \___|\__, |\___/_/\_\ .__/|___(_)
-                      |___/          |_|
+                 _ __ ___  __ _  _____  ___ __  ___| |
+                | '__/ _ \/ _` |/ _ \ \/ / '_ \/ __| |
+                | | |  __/ (_| |  __/>  <| |_) \__ \_|
+                |_|  \___|\__, |\___/_/\_\ .__/|___(_)
+                          |___/          |_|
 .
-             OMG! THEY'RE SO NEW AND EXCITING! (*)
+                 OMG! THEY'RE SO NEW AND EXCITING! (*)
 .
 .
 .
@@ -260,22 +295,137 @@
       ... and then repurposed by all those clever Unix folks.
 .
 .
+.
+                 * Basically no different to sed/grep
+                 * No submatch variables :(
+                   i.e. (.+) => \1 in sed
+.
+                 * I'm amazed at how little they've changed
+                     since 1988
 
-
-
-
-
-                   Regexes in AWK
-                   --------------
 
 
 
 
                    How did I not know about printf?
                    --------------------------------
+.
+.
+                   * Works just like regular printf
+                   * sprintf is also available.
 
 
 
+                   Arrays
+                   ------
+.
+.
+                   * one dimensional, though the book gives
+                     a workaround (and this may be a feature of
+                     modern awk?)
+.
+                   arr["thing"] = value
+.
+                   records[NR] = $0
+.
+                   for (key in arr) {
+                     print key, arr[key]
+                   }
+.
+                   split($1, arr, ",")
+.
+                   if arr[key] > 500
+                     delete arr[key]
+
+
+                   Common built-in functions
+                   -------------------------
+.
+.
+           sub(/regex/,s)     # leftmost sub in $0
+           sub(/regex/,s,t)   # leftmost sub in t
+.
+           gsub(/regex/,s)    # global sub in $0
+           gsub(/regex/,s,t)  # global sub in t
+.
+           substr(s,p)        # return suffix of s, at pos p
+           substr(s,p,n)      # return substr of s, len n, at pos p
+.
+           index(s,t)         # return pos of string t in s. 0 otherwise
+           length(s)          # return length of string
+           match(s,/regex/)   # return index of match or 0 if not.
+.
+           sprintf(fmt, expr-list)  # as you're used to
+.
+
+
+                   Custom functions are a thing
+                   ----------------------------
+.
+.
+                   * As you'd expect, but have never used.
+                   * variables are passed as a copy
+                   * arrays are passed by reference
+.
+                   function add(arg1, arg2) {
+                     return arg1 + arg2
+                   }
+.
+                   function sum_and_delete(arr) {
+                     for (k in arr) {
+                       sum = sum + arr[k]
+                       delete arr[k] # mutates arr
+                     }
+                     return sum
+                   }
+.
+.
+
+
+                   Interation with other programs
+                   ------------------------------
+.
+.
+                   * system() works as you'd expect
+.
+                   system("cat " $2)
+.
+                   * also can use a pipe!
+.
+                   while ("who" | getline) {
+                     num_users++
+                   }
+.
+.
+                   print $0 | "sort -r"
+.
+.
+
+
+
+
+                   AWK Gotchas
+                   -----------
+.
+.
+                   * 'print' on its own prints $0 (the record)
+                   * variables don't use $
+                     '$' indicates 'field', eg (i=1;$i) == $1
+
+
+                   Some less used variables
+                   ------------------------
+.
+             ORS        - output record seperator (default \n)
+             OFS        - output field seperator (default whitespace)
+.
+             FILENAME   - name of the file being worked on
+                          (when list of files given as ARGV)
+             FNR        - number of records read from current file
+.
+             ENVIRON    - Array for accessing envvars,
+                          eg ENVIRON["USER"]
+                          ('modern' awk only)
 
 .
 .

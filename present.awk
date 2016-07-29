@@ -2,7 +2,12 @@
 
 BEGIN {
   FS="\n";  # lines are fields
-  RS="";    # multiline records
+  RS="";    # multiline records (RS effectively \n\n+)
+}
+
+function get_key() {
+  # reset our RS so we can read a single newline from STDIN
+  RS="\n"; getline key < "-"; RS=""
 }
 
 {
@@ -15,17 +20,13 @@ BEGIN {
     # regular slide:
     for (i=1; i<=NF; i++) {
       if ($i == ".") {
-        # hack to work add newlines
-        print ""
+        print "" # hack to include newlines in slides
       } else {
-        # print line (aka field)
-        print $i
+        print $i # print line (aka field)
       }
     }
 
   }
-  # reset our RS so we can read a single
-  # newline from STDIN
-  RS="\n"; getline key < "-"; RS=""
+  get_key()
 }
 
