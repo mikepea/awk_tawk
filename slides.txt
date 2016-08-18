@@ -19,6 +19,8 @@
                               by
 .
                            @mikepea
+
+@last
 .
 .
          WARNING: This tawk repeatedly uses the word 'orgy',
@@ -45,59 +47,63 @@
                           *
 .
                           * 1977 *
+
+@last
 .
       The year:
 .
+@last
        - the Sex Pistols get in huge trouble for swearing on TV
+@last
        - Abigails Party is released
+@last
        - our lizard overlord has been ruling over us for 25 years
 
 
 .
-.
-.
                       A Bit Of History
                       ----------------
 .
+@last
     1970: Unics is born.
+@last
     1971: man pages appear
 .
-    1973: mikepea is born.
+
+@last
     1973: Unix pipelines invented, creating the Unix Philosophy,
           and 'an unforgettable orgy of one-liners'.
           Doug McIlroy <3
+
+@last
+    1973: mikepea is born.
+
+@last
 .
     1977: Unix 7th Edition. Has Bourne Shell, grep, sed.
+
+@last
 .
-                           AND AWK
+                            AND AWK!
+
+@last
 .
     1979: vi appears on the scene.
+
+@last
 .
     1986: 4.3BSD released.
           'The Greatest Software Ever Written', according to some.
-.
+
+@last
     1990: Web is born.
-.
-    1991: Linux happens.
-.
 
+@last
+.
+    1994: mikepea writes his first program in AWK.
+          A menu system for a helpdesk at $firstjob.
 
-.
-.
-.
-.
-.
-.
-.
-.
-.
-   1994: mikepea writes his first program in AWK.
-.
-         A menu system for a helpdesk at $firstjob
-.
-         ... after learning vi on the night shift.
-
-!mplayer -vo caca tim-and-eric-mind-blown.mp4
+#!mplayer -vo caca tim-and-eric-mind-blown.mp4
 
 .
 .
@@ -111,7 +117,7 @@
                     System Error
                     ------------
 .
-                    MIND ASPLODED
+                    MIND BLOWN
 
 .
 .
@@ -120,23 +126,39 @@
 .
 .
 .
-                   Rough format most peoples AWK
-                   -----------------------------
 .
 .
-                   grep ' 200 ' $file | awk '{print $3}'
+                    SOME TIME PASSES
+                    ----------------
+
+.
+.
+.
+.
+.
+.
+.
+                   Rough format most peoples AWK nowadays
+                   --------------------------------------
+.
+.
+                   grep ' 200 ' $log | awk '{print $3}'
+
+@last
 .
 .
                           or maybe...
 .
 .
-                   awk '/ 200 / {print $3}' # OMG
+                   awk '/ 200 / {print $3}' $log # OMG
 .
 .
+
+@last
                           or maybe...
 .
 .
-                   awk '$7 == 200 {print $3}' # OMG OMG OMG
+                   awk '$7 == 200 {print $3}' $log # OMG OMG
 
 
 .
@@ -149,22 +171,32 @@
                    awk -f {script} input_files
 .
                    ... where a program looks like:
+
+@last
 .
                    BEGIN {
                      # do initialisation stuff
                    }
+
+@last
                    expression {
                      # do stuff on records matching expression
                      # eg '$3 > 200'; '$4 !~ /foo/'
                      # can also be compound, with
                      # logical &&, ||, ! etc.
                    }
+
+@last
                    /regex/ {
                      # do stuff on records matching regex
                    }
+
+@last
                    /from/,/to/ {
                      # do stuff on records between regexes
                    }
+
+@last
                    END {
                      # finish up. Like print a summary.
                    }
@@ -177,14 +209,21 @@
 .
 .
 .
-                   Some common variables
-                   ---------------------
+                   Some common 'variables'
+                   -----------------------
 .
 .
              $1 .. $n   - field references
+             $i         - field referenced by integer i
+
+@last
+.
              NR         - number of records in input
              NF         - number of fields in record
              $NF        - last field in record
+
+@last
+.
              RS         - input record seperator (default \n)
              FS         - input field seperator (default whitespace)
 
@@ -199,39 +238,27 @@
                           ---------
 
 
-.
-.
-.
-.
-.
-.
-.
-                          WHY EVEN?
-                          ---------
+@last
 .
                      Blame Bryan Cantrill
 
 !mplayer -vo caca -ss 17:51 -endpos 00:01 cantrill_big_data_awk.mkv
 
-.
-.
-.
-.
-.
-.
-.
-                          WHY EVEN?
-                          ---------
-.
-                     Blame Bryan Cantrill
+@last
 .
              The AWK Programming Language, 1988
-.
-  <3 <3 <3  Typeset using a DEC VAX 8550 running 9th ed. UNIX® <3 <3 <3
-.
-.
 
-!mplayer -vo caca -ss 19:50 -endpos 00:18 cantrill_big_data_awk.mkv
+@last
+.
+             <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
+             <3                               <3
+             <3 Typeset using a DEC VAX 8550  <3
+             <3     running 9th ed. UNIX®     <3
+             <3                               <3
+             <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
+
+
+#!mplayer -vo caca -ss 19:50 -endpos 00:18 cantrill_big_data_awk.mkv
 
 
 
@@ -240,40 +267,64 @@
                    An Orgy Of One-Liners
                    ---------------------
 .
-   awk 'END { print NR }'     # print number of input lines
+   awk 'END { print NR }'     # wc -l
+
+@last
    awk 'NR == 10'             # print 10th line
+
+@last
    awk '{ print $NF }'        # print last field of every line
+
+@last
    awk 'NF > 4'               # print lines with more than 4 fields
+
+@last
    awk '$NF > 4'              # print lines where last field is more than 4
+
+@last
 .
    # print number of lines matching 'Foo'
    awk '/Foo/ { nlines = nlines + 1 } END {print nlines}'
+
+@last
 .
    # print max value of first field
    awk '$1 > max { max = $1 } END {print max}'
+
+@last
 .
    awk 'length($0) > 80'      # print lines >80 chars
+
+@last
    awk '{ $1 = NR; print}'    # replace first field with line number
+
+@last
    awk '{ $2 = ""; print}'    # erase the second field
-.
 
 
              The AWK Programming Language, 1988
              ----------------------------------
 .
            An absolute delight of a technical book
+
+@last
 .
            Still amazingly current. Awk has changed (gawk, nawk)
            but is still fundamentally the same language.
+
+@last
 .
            Has got an 'Algorithms' section! Interview answers in AWK!
+
+@last
 .
            Has a chapter on writing DSLs, which it calls
            'Little Langauges' <3
+
+@last
 .
            Has a section on creating a RDBMS in AWK, with a custom
            query language!
-.
 
 .
 .
@@ -287,6 +338,8 @@
                           |___/          |_|
 .
                  OMG! THEY'RE SO NEW AND EXCITING! (*)
+
+@last
 .
 .
 .
@@ -411,17 +464,25 @@
                    * 'print' on its own prints $0 (the record)
                    * variables don't use $
                      '$' indicates 'field', eg (i=1;$i) == $1
+                   * scope TODO
+                   * ...
 
 
                    Some less used variables
                    ------------------------
+
+@last
 .
              ORS        - output record seperator (default \n)
              OFS        - output field seperator (default whitespace)
+
+@last
 .
              FILENAME   - name of the file being worked on
                           (when list of files given as ARGV)
              FNR        - number of records read from current file
+
+@last
 .
              ENVIRON    - Array for accessing envvars,
                           eg ENVIRON["USER"]
@@ -438,47 +499,14 @@
                       brought to you
                       by the letters
 
-.
-.
-.
-.
-.
-.
-.
-                   This presentation was
-                      brought to you
-                      by the letters
+@last
 .
                            A,
 
-.
-.
-.
-.
-.
-.
-.
-                   This presentation was
-                      brought to you
-                      by the letters
-.
-                           A,
+@last
                            W,
 
-
-.
-.
-.
-.
-.
-.
-.
-                   This presentation was
-                      brought to you
-                      by the letters
-.
-                           A,
-                           W,
+@last
                          & K
 
 !awk '{print "       ",$0}' present.awk
