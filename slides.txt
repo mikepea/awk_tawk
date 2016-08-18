@@ -242,7 +242,7 @@
 .
                      Blame Bryan Cantrill
 
-!mplayer -vo caca -ss 17:51 -endpos 00:01 cantrill_big_data_awk.mkv
+#!mplayer -vo caca -ss 17:51 -endpos 00:01 cantrill_big_data_awk.mkv
 
 @last
 .
