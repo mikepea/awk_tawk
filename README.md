@@ -6,3 +6,4 @@ Also includes a presentation tool, written in AWK. Eating own dog food or what!
 
     awk -f ./present.awk slides.txt
 
+Hit enter to advance slides. PRs welcome.
