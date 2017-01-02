@@ -52,20 +52,31 @@
 .
       The year:
 .
+
+
 @last
-       - the Sex Pistols get in huge trouble for swearing on TV
+       - Star Wars released
+
+
 @last
-       - Abigails Party is released
+       - Apple Computer, Inc incorporates
+
+
 @last
-       - our lizard overlord has been ruling over us for 25 years
+       - the Sex Pistols get in huge trouble for swearing a bit on TV
 
 
 .
                       A Bit Of History
                       ----------------
 .
+
+
 @last
     1970: Unics is born.
+
+
+
 @last
     1971: man pages appear
 .
@@ -76,11 +87,8 @@
           Doug McIlroy <3
 
 @last
-    1973: mikepea is born.
-
-@last
 .
-    1977: Unix 7th Edition. Has Bourne Shell, grep, sed.
+    1979: Unix 7th Edition. Has Bourne Shell, grep, sed.
 
 @last
 .
@@ -103,7 +111,6 @@
     1994: mikepea writes his first program in AWK.
           A menu system for a helpdesk at $firstjob.
 
-#!mplayer -vo caca tim-and-eric-mind-blown.mp4
 
 .
 .
@@ -138,8 +145,8 @@
 .
 .
 .
-                   Rough format most peoples AWK nowadays
-                   --------------------------------------
+                   Rough format my^Wmost peoples AWK nowadays
+                   ------------------------------------------
 .
 .
                    grep ' 200 ' $log | awk '{print $3}'
@@ -242,7 +249,6 @@
 .
                      Blame Bryan Cantrill
 
-#!mplayer -vo caca -ss 17:51 -endpos 00:01 cantrill_big_data_awk.mkv
 
 @last
 .
@@ -258,7 +264,6 @@
              <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
 
 
-#!mplayer -vo caca -ss 19:50 -endpos 00:18 cantrill_big_data_awk.mkv
 
 
 
@@ -330,7 +335,7 @@
 .
 .
 .
-                                                _
+                                                    _
                  _ __ ___  __ _  _____  ___ __  ___| |
                 | '__/ _ \/ _` |/ _ \ \/ / '_ \/ __| |
                 | | |  __/ (_| |  __/>  <| |_) \__ \_|
@@ -349,12 +354,17 @@
 .
 .
 .
+
+
+                   Regexps in AWK
+                   --------------
+
                  * Basically no different to sed/grep
                  * No submatch variables :(
                    i.e. (.+) => \1 in sed
 .
                  * I'm amazed at how little they've changed
-                     since 1988
+                   since 1988
 
 
 
