@@ -20,11 +20,39 @@
 .
                            @mikepea
 
+.
+.
+.
+.
+.
+.
+.
+                          AWK? Wassat?
+                          ------------
+.
+
 @last
 .
+                A data transformation and reporting tool.
+                Reads records from files/stdin, and interprets
+                each record as a list of fields which can then
+                be manipulated.
+
+@last
 .
-         WARNING: This tawk repeatedly uses the word 'orgy',
-                  in an historical context. Sorry.
+                Awk is a programming language designed to
+                make many common information retrieval and text
+                manipulation tasks easy to state and to perform.
+                ( y/awk-1978-paper )
+
+@last
+.
+                Written in 1977, by Alfred Aho, Peter Weinberger,
+                & Brian Kerninghan,
+
+@last
+.
+                Hence AWK!
 
 .
 .
@@ -33,38 +61,49 @@
 .
 .
 .
-.
-.
-                          AWK? WUT?
+                          AWK? Why?
                           ---------
 .
-                          *
-                          *
-                Alfred V. Aho
-                 Peter J. Weinberger
-                 Brian W. Kernighan
-                          *
-                          *
 .
-                          * 1977 *
 
 @last
 .
-      The year:
+                Well, I <3 Awk.
+
+@last
 .
-
-
-@last
-       - Star Wars released
-
+                First language I ever wrote anything 'commercial' in.
+                In 1994, :ahem:.
 
 @last
-       - Apple Computer, Inc incorporates
-
+.
+                But i'm not alone - y/cantrill-bigdata (skip to 19:30)
 
 @last
-       - the Sex Pistols get in huge trouble for swearing a bit on TV
+.
+                THE [grey] AWK BOOK - y/awk-book
 
+.
+.
+.
+.
+.
+.
+.
+                          AWK? Why?
+                          ---------
+.
+.
+.
+                grep ' 200 ' access_log | awk '{print $1}'
+
+@last
+.
+                :(
+
+@last
+.
+                But I always remember that it can do loads more!
 
 .
                       A Bit Of History
@@ -73,58 +112,47 @@
 
 
 @last
-    1970: Unics is born.
-
-
-
-@last
-    1971: man pages appear
-.
+    1970: Unics [sic] is born. Ken Thompson, Dennis Ritchie at Bell Labs.
+          Born out of multics, after much financial wrangling to get
+          a spare PDP-7.
 
 @last
-    1973: Unix pipelines invented, creating the Unix Philosophy,
-          and 'an unforgettable orgy of one-liners'.
-          Doug McIlroy <3
+          First step - Space Travel game! (Then copy, print, edit, delete :)
 
 @last
 .
-    1979: Unix 7th Edition. Has Bourne Shell, grep, sed.
+    1971: man pages appear, at the request of Doug McIlroy (their manager ;)
 
 @last
 .
-                            AND AWK!
+    1973: Unix pipelines invented (along with sed, grep and tr)
+          Effectively creating the Unix Philosophy, and 'an unforgettable
+          orgy of one-liners'. Doug McIlroy <3
 
 @last
 .
-    1979: vi appears on the scene.
+    1975: Lex and Yacc are created, enabling tools like 'bc'
 
 @last
 .
-    1986: 4.3BSD released.
-          'The Greatest Software Ever Written', according to some.
+    1977: Awk is born. Essentially the first scripting language on Unix!
+.
+          "Awk was originally designed... in part of an experiment to see
+          how the Unix tools grep and sed could be generalized to deal with
+          numbers as well as text... based on our interest in regular
+          expressions"
 
 @last
-    1990: Web is born.
+.
+    1985: Brian Kerninghan creates (and still maintains!) New AWK (nawk).
+          This is on your Macs!
 
 @last
 .
-    1994: mikepea writes his first program in AWK.
-          A menu system for a helpdesk at $firstjob.
+    1988: POSIX standard created, with awk as an included component.
+.
 
 
-.
-.
-.
-.
-.
-.
-.
-.
-.
-                    System Error
-                    ------------
-.
-                    MIND BLOWN
 
 .
 .
@@ -135,186 +163,36 @@
 .
 .
 .
-                    SOME TIME PASSES
-                    ----------------
 
 .
 .
-.
-.
-.
-.
-.
-                   Rough format my^Wmost peoples AWK nowadays
-                   ------------------------------------------
-.
-.
-                   grep ' 200 ' $log | awk '{print $3}'
+            The AWK Programming Language, 1988
+            ----------------------------------
 
 @last
 .
 .
-                          or maybe...
-.
-.
-                   awk '/ 200 / {print $3}' $log # OMG
-.
-.
+            <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
+            <3                               <3
+            <3 Typeset using a DEC VAX 8550  <3
+            <3     running 9th ed. UNIX®     <3
+            <3                               <3
+            <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
 
-@last
-                          or maybe...
-.
-.
-                   awk '$7 == 200 {print $3}' $log # OMG OMG
+
+
 
 
 .
 .
+           The AWK Programming Language, 1988
+           ----------------------------------
 .
-                   Understand awk a bit betterer
-                   -----------------------------
-.
-                   awk '{program}' input_files
-                   awk -f {script} input_files
-.
-                   ... where a program looks like:
+           An absolute delight of a technical book.
 
 @last
 .
-                   BEGIN {
-                     # do initialisation stuff
-                   }
-
-@last
-                   expression {
-                     # do stuff on records matching expression
-                     # eg '$3 > 200'; '$4 !~ /foo/'
-                     # can also be compound, with
-                     # logical &&, ||, ! etc.
-                   }
-
-@last
-                   /regex/ {
-                     # do stuff on records matching regex
-                   }
-
-@last
-                   /from/,/to/ {
-                     # do stuff on records between regexes
-                   }
-
-@last
-                   END {
-                     # finish up. Like print a summary.
-                   }
-
-
-.
-.
-.
-.
-.
-.
-.
-                   Some common 'variables'
-                   -----------------------
-.
-.
-             $1 .. $n   - field references
-             $i         - field referenced by integer i
-
-@last
-.
-             NR         - number of records in input
-             NF         - number of fields in record
-             $NF        - last field in record
-
-@last
-.
-             RS         - input record seperator (default \n)
-             FS         - input field seperator (default whitespace)
-
-.
-.
-.
-.
-.
-.
-.
-                          WHY EVEN?
-                          ---------
-
-
-@last
-.
-                     Blame Bryan Cantrill
-
-
-@last
-.
-             The AWK Programming Language, 1988
-
-@last
-.
-             <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
-             <3                               <3
-             <3 Typeset using a DEC VAX 8550  <3
-             <3     running 9th ed. UNIX®     <3
-             <3                               <3
-             <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3 <3
-
-
-
-
-
-
-.
-                   An Orgy Of One-Liners
-                   ---------------------
-.
-   awk 'END { print NR }'     # wc -l
-
-@last
-   awk 'NR == 10'             # print 10th line
-
-@last
-   awk '{ print $NF }'        # print last field of every line
-
-@last
-   awk 'NF > 4'               # print lines with more than 4 fields
-
-@last
-   awk '$NF > 4'              # print lines where last field is more than 4
-
-@last
-.
-   # print number of lines matching 'Foo'
-   awk '/Foo/ { nlines = nlines + 1 } END {print nlines}'
-
-@last
-.
-   # print max value of first field
-   awk '$1 > max { max = $1 } END {print max}'
-
-@last
-.
-   awk 'length($0) > 80'      # print lines >80 chars
-
-@last
-   awk '{ $1 = NR; print}'    # replace first field with line number
-
-@last
-   awk '{ $2 = ""; print}'    # erase the second field
-
-
-             The AWK Programming Language, 1988
-             ----------------------------------
-.
-           An absolute delight of a technical book
-
-@last
-.
-           Still amazingly current. Awk has changed (gawk, nawk)
+           Still amazingly current. Awk has evolved (gawk, nawk)
            but is still fundamentally the same language.
 
 @last
@@ -331,11 +209,194 @@
            Has a section on creating a RDBMS in AWK, with a custom
            query language!
 
+
+
+
+
+
+.
+.
+                   Understand awk a bit betterer
+                   -----------------------------
+.
+                   awk [-Fs] '{program}' input_files
+                   awk [-Fs] -f {script} input_files
+.
+                   ... where a program looks like:
+
+@last
+.
+                   BEGIN {
+                     # do initialisation stuff
+                   }
+.
+                   conditional {
+                     # do stuff on records matching condition
+                   }
+.
+                   END {
+                     # finish up. Like print a report.
+                   }
+
+.
+.
+                   Some important built-in variables
+                   ---------------------------------
+.
+
+@last
+.
+                   $1 .. $n   - field references
+                   $i         - field referenced by integer i
+
+@last
+                   NF         - number of fields in record
+
+@last
+                   $NF        - last field in record
+
+@last
+.
+                   NR         - number of records read so far
+                                ('current line')
+                   FNR        - number of records read so far
+                                in this file
+
+@last
+.
+                   RS         - input record seperator (default \n)
+                   FS         - input field seperator (default whitespace)
+
+@last
+.
+                   ORS        - output record seperator (default \n)
+                   OFS        - output field seperator (default whitespace)
+
+
+.
+.
+                   An Unforgettable Orgy Of One-Liners
+                   -----------------------------------
+
+.
+.
+                   An Unforgettable(*) Orgy Of One-Liners
+                   --------------------------------------
+                   (*) jk, you're totally gonna forget these.
+                       see github.com/mikepea/awk_tawk for a refresh
+
+@last
+.
+           awk 'END { print NR }'
+
+@last
+           # wc -l
+
+@last
+.
+           awk 'NR == 10000000'
+
+@last
+           # print 10,000,000th line
+
+@last
+.
+           awk '{ print $NF }'
+
+@last
+           # print last field of every line
+
+@last
+.
+           awk '{ n = n + NF } END { print n }'
+
+@last
+           # wc -w
+
+@last
+.
+           awk 'BEGIN { FS="" } { n = n + NF + 1 } END { print n }'
+
+@last
+           # wc -c
+
+@last
+.
+
+
+.
+.
+                   An Unforgettable(*) Orgy Of One-Liners
+                   --------------------------------------
+                   (*) jk, you're totally gonna forget these.
+                       see github.com/mikepea/awk_tawk for a refresh
+
+@last
+.
+           awk '$9 == 200 { print $1 }' access_log
+
+@last
+           # show IPs that had 200s from an Apache access log
+
+@last
+.
+           ls -l | awk '{ sum = sum + $5 } END {print sum}'
+
+@last
+           # print the total bytes of a list of files
+
+@last
+.
+           awk 'BEGIN { FS=":" } $2 > max { max = $2 } END {print max}' passwd
+
+@last
+           # print highest uid from passwd file
+
+
+@last
+.
+           awk '{ $1 = NR; print}'
+           # replace first field with line number
+
+@last
+.
+           awk '{ $2 = ""; print}'
+           # erase the second field
+
+
+.
+.
+                   An Unforgettable(*) Orgy Of One-Liners
+                   --------------------------------------
+                   (*) jk, you're totally gonna forget these.
+                       see github.com/mikepea/awk_tawk for a refresh
+.
+.
+           awk 'BEGIN { print "Hello World!" }'
+@last
+           # the BEGIN is important!
+
+@last
+.
+           awk 'BEGIN { srand(); t=srand(); print t }'
+
+@last
+           # date +'%s' # WHAAAAT!!?!1111!
+.
+
+@last
+.
+           Thank @codymello for that one. POSIX!
+
+.
+.
+                   What else?
+                   ----------
+
 .
 .
 .
 .
-                                                    _
                  _ __ ___  __ _  _____  ___ __  ___| |
                 | '__/ _ \/ _` |/ _ \ \/ / '_ \/ __| |
                 | | |  __/ (_| |  __/>  <| |_) \__ \_|
@@ -350,108 +411,198 @@
 .
  (*) actually invented in 1956 by Stephen Cole Kleen, a mathematician
 .
-      ... and then repurposed by all those clever Unix folks.
+      ... and then repurposed by Ken Thompson in 'ed', and by extension 'grep'
 .
 .
 .
 
 
+.
+.
                    Regexps in AWK
                    --------------
+.
+                 * Basically no different to sed/grep. Yey standards!
 
-                 * Basically no different to sed/grep
+
+@last
+                 * I'm amazed at how little they've changed
+                   since 1988
+.
+
+@last
+                 * Useful in record matching conditionals
+.
+                   /regex/ {
+                     # do stuff on records matching regex
+                   }
+.
+
+@last
+                   /from/,/to/ {
+                     # do stuff on records between regexes
+                   }
+
+@last
+.
                  * No submatch variables :(
                    i.e. (.+) => \1 in sed
 .
-                 * I'm amazed at how little they've changed
-                   since 1988
 
 
-
-
-
-                   How did I not know about printf?
-                   --------------------------------
 .
 .
-                   * Works just like regular printf
-                   * sprintf is also available.
+                   Useful built-in functions
+                   -------------------------
+.
+.
+
+@last
+               sub(/regex/,s)     # leftmost sub in $0
+               sub(/regex/,s,t)   # leftmost sub in t
+               gsub(/regex/,s)    # global sub in $0
+               gsub(/regex/,s,t)  # global sub in t
+.
+
+@last
+               substr(s,p)        # return suffix of s, at pos p
+               substr(s,p,n)      # return substr of s, len n, at pos p
+.
+
+                   Useful built-in functions
+                   -------------------------
+.
+.
+
+@last
+               srand(s)           # seed random number generator with 's'
+               rand()             # return random number 0 <= n < 1
+.
+
+@last
+               index(s,t)         # return pos of string t in s. 0 otherwise
+               length(s)          # return length of string
+               match(s,/regex/)   # return index of match or 0 if not.
+.
+
+@last
+.
+               awk 'length($0) > 80' myprog.py
+               # print lines >80 chars
+
+                   Useful built-in functions
+                   -------------------------
+.
+.
+
+@last
+               printf(fmt, expr-list)
+               sprintf(fmt, expr-list)
+
+.
+.
+.
+                   How the hell did I not know about printf?!
+                   -----------------------------------------
+.
+.
+
+@last
+                   * Works just like regular printf / sprintf
+.
+                   awk '{ printf("Hello %s %s", $3, $4) }'
+                   awk '{ fullname = sprintf("%s %s", $3, $4) }'
 
 
 
+.
+.
                    Arrays
                    ------
 .
 .
-                   * one dimensional, though the book gives
-                     a workaround (and this may be a feature of
-                     modern awk?)
+                   * associative, so really a dictionary
 .
+                   * one dimensional, though the book gives
+                     a workaround for multi-dimensional (and this may be a 
+                     feature of modern gawk?)
+.
+
+@last
                    arr["thing"] = value
 .
+
+@last
                    records[NR] = $0
 .
+
+@last
                    for (key in arr) {
                      print key, arr[key]
                    }
 .
+
+@last
                    split($1, arr, ",")
 .
+
+@last
                    if arr[key] > 500
                      delete arr[key]
 
 
-                   Common built-in functions
-                   -------------------------
-.
-.
-           sub(/regex/,s)     # leftmost sub in $0
-           sub(/regex/,s,t)   # leftmost sub in t
-.
-           gsub(/regex/,s)    # global sub in $0
-           gsub(/regex/,s,t)  # global sub in t
-.
-           substr(s,p)        # return suffix of s, at pos p
-           substr(s,p,n)      # return substr of s, len n, at pos p
-.
-           index(s,t)         # return pos of string t in s. 0 otherwise
-           length(s)          # return length of string
-           match(s,/regex/)   # return index of match or 0 if not.
-.
-           sprintf(fmt, expr-list)  # as you're used to
-.
 
-
+.
+.
                    Custom functions are a thing
                    ----------------------------
 .
 .
-                   * As you'd expect, but have never used.
+                   * As you'd expect, but have probably never used.
+
+@last
                    * variables are passed as a copy
                    * arrays are passed by reference
 .
+
+@last
                    function add(arg1, arg2) {
                      return arg1 + arg2
                    }
+
+@last
 .
-                   function sum_and_delete(arr) {
-                     for (k in arr) {
-                       sum = sum + arr[k]
-                       delete arr[k] # mutates arr
-                     }
-                     return sum
+                   function alen(a) {
+                     c=0;
+                     for (i in a) c++;
+                     return c;
                    }
+
+@last
+.
+                   function clear_array(a) { split("", a, ":"); }
+
+@last
+.
+                   function get_key() { RS="\n"; getline key < "-"; RS="" }
+
 .
 .
-
-
                    Interation with other programs
                    ------------------------------
 .
 .
+
+@last
                    * system() works as you'd expect
 .
                    system("cat " $2)
+
+@last
+.
+                   function refresh() { system("clear"); print ""; }
+
+@last
 .
                    * also can use a pipe!
 .
@@ -460,43 +611,24 @@
                    }
 .
 .
-                   print $0 | "sort -r"
-.
 .
 
-
-
-
-                   AWK Gotchas
-                   -----------
 .
 .
-                   * 'print' on its own prints $0 (the record)
-                   * variables don't use $
-                     '$' indicates 'field', eg (i=1;$i) == $1
-                   * scope TODO
-                   * ...
-
-
-                   Some less used variables
+                   What's crappy about Awk?
                    ------------------------
+.
+@last
+                   * scope is global. Meh.
 
 @last
 .
-             ORS        - output record seperator (default \n)
-             OFS        - output field seperator (default whitespace)
+                   * $0 is a string
 
 @last
 .
-             FILENAME   - name of the file being worked on
-                          (when list of files given as ARGV)
-             FNR        - number of records read from current file
+                   * OFS isn't as useful as I thought as a result :(
 
-@last
-.
-             ENVIRON    - Array for accessing envvars,
-                          eg ENVIRON["USER"]
-                          ('modern' awk only)
 
 .
 .
@@ -505,20 +637,14 @@
 .
 .
 .
-                   This presentation was
-                      brought to you
-                      by the letters
-
-@last
+                   The AWK Programming Language, 1988
+                   ----------------------------------
 .
-                           A,
+                   "Awk is not a solution to every programming problem,
+                   but it's an indispensable part of a programmer's
+                   toolbox, especially on Unix, where easy connection
+                   of tools is a way of life."
 
-@last
-                           W,
-
-@last
-                         & K
 
 !awk '{print "       ",$0}' present.awk
 
-!awk 'BEGIN { for (i=0;i<300;i++) {printf(" THANKYOU ")} }'
