@@ -288,6 +288,11 @@
 
 @last
 .
+   # convert a tab-separated file to a comma-separated file
+   awk 'BEGIN { FS="\t"; OFS="," } {$1=$1; print}' file.tsv > file.csv
+
+@last
+.
    # print number of lines matching 'Foo'
    awk '/Foo/ { nlines = nlines + 1 } END {print nlines}'
 
